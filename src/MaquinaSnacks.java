@@ -19,7 +19,7 @@ public class MaquinaSnacks {
         while(!salir){
             try{
                 var opcion = mostrarMenu(consola);
-                //salir = ejecutarOpciones
+                salir = ejecutarOpciones(opcion, consola, productos);
             }catch (Exception e){
                 System.out.println("Ocurrio un error: "+ e.getMessage());
             }
@@ -43,9 +43,29 @@ public class MaquinaSnacks {
     private static boolean ejecutarOpciones(int opcion, Scanner consola, List<Snack>productos){
         var salir = false;
         switch (opcion){
-           // case 1 -> comprarStack(consola, productos);
+           case 1 -> comprarSnack(consola, productos);
         }
         return salir;
     }
 
+    private static void comprarSnack(Scanner consola, List<Snack>productos){
+        System.out.print("Que snack quieres comprar(id)?");
+        var idSnack = Integer.parseInt(consola.nextLine());
+
+        // Validar que el snack exista
+        var snackEncontrado = false;
+        for (var snack: Snacks.getSnacks()){
+            if (idSnack == snack.getIdSnak()){
+                //Agregar el snack a la lista de porductos
+                productos.add(snack);
+                System.out.println("Snack agregado");
+                snackEncontrado = true;
+                break;
+            }
+        }
+
+        if (!snackEncontrado){
+            System.out.println("Id de Snack no encontrado");
+        }
+    }
 }
