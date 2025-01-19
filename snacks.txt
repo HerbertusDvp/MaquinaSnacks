@@ -1,0 +1,5 @@
+1,Papas,70.0
+2,Refresco,30.0
+3,Chocoleit,37.0
+4,Yakult,8.9
+5,nachos,45.87
